@@ -8,17 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://missionfriend1.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Virtualizatio_project_01</title>
+      <title>Virtualization_project_01</title>
       <link>https://missionfriend1.github.io/posts/proxmoxv1/</link>
       <pubDate>Wed, 27 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://missionfriend1.github.io/posts/proxmoxv1/</guid>
-      <description>Project Idea: I would like to have a system for network virtualization service for my own persoal projects and homelab like setup.
-Investigation stage The initial idea for this project was inspired by my shcool&amp;rsquo;s Cyber Range (which is currently maintained by yours truly). I really like how in the Cyber Range students can get a virtual machine hosted over the network to allow for a sandboxed environment that is ofloaded to a separate machine.</description>
+      <description>Project Idea: I would like to have a system for network virtualization service for my own personal projects and homelab.
+Investigation stage The initial idea for this project was inspired by my school&amp;rsquo;s Cyber Range (which is currently maintained by yours truly). I really like how in the Cyber Range students can get a virtual machine hosted over the network to allow for a sandboxed environment that is ofloaded to a separate machine.</description>
       <content>&lt;h2 id=&#34;project-idea&#34;&gt;Project Idea:&lt;/h2&gt;
-&lt;p&gt;I would like to have a system for network virtualization service for my own persoal projects and homelab like setup.&lt;/p&gt;
+&lt;p&gt;I would like to have a system for network virtualization service for my own personal projects and homelab.&lt;/p&gt;
 &lt;h2 id=&#34;investigation-stage&#34;&gt;Investigation stage&lt;/h2&gt;
-&lt;p&gt;The initial idea for this project was inspired by my shcool&amp;rsquo;s Cyber Range (which is currently maintained by yours truly). I really like how in the Cyber Range students can get a virtual machine hosted over the network to allow for a sandboxed environment that is ofloaded to a separate machine.&lt;/p&gt;
+&lt;p&gt;The initial idea for this project was inspired by my school&amp;rsquo;s Cyber Range (which is currently maintained by yours truly). I really like how in the Cyber Range students can get a virtual machine hosted over the network to allow for a sandboxed environment that is ofloaded to a separate machine.&lt;/p&gt;
 &lt;p&gt;The school&amp;rsquo;s Cyber Range runs on Openstack which is a really nice project, but it is a bit overly complicated for my needs in a personal project such as this. So I went to work and investigated the following systems to handle this for me while trying to find the best fit.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Openstack (&lt;a href=&#34;https://www.openstack.org/&#34;&gt;https://www.openstack.org/&lt;/a&gt;)
@@ -46,7 +46,7 @@ Investigation stage The initial idea for this project was inspired by my shcool&
 &lt;p&gt;I have decided to go with Proxmox as at this point in time it makes the most sense for me to use it. Its free version is very appealing and it has a decently easy installer with easy to manage vms and vm networks.&lt;/p&gt;
 &lt;h2 id=&#34;step-1-download-and-prepare&#34;&gt;Step 1: Download and prepare&lt;/h2&gt;
 &lt;p&gt;I went to proxmox&amp;rsquo;s website and specifically their download page (&lt;a href=&#34;https://www.proxmox.com/en/downloads/category/iso-images-pve)&#34;&gt;https://www.proxmox.com/en/downloads/category/iso-images-pve)&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;From there I used the usb flasher tool rufus () to flash a spare usb drive with the iso.
+&lt;p&gt;From there I used the usb flasher tool rufus (&lt;a href=&#34;https://rufus.ie/en/&#34;&gt;https://rufus.ie/en/&lt;/a&gt;) to flash a spare usb drive with the iso.
 For my specific setup, I needed the following settings in rufus to get it to work:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Ensure it is in uefi mode not mbr or legacy or bios.&lt;/li&gt;
