@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 27 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://missionfriend1.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Virtualization_project_01</title>
-      <link>https://missionfriend1.github.io/posts/proxmoxv1/</link>
+      <link>https://missionfriend1.github.io/posts/proxmoxv1/proxmoxv1/</link>
       <pubDate>Wed, 27 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://missionfriend1.github.io/posts/proxmoxv1/</guid>
+      <guid>https://missionfriend1.github.io/posts/proxmoxv1/proxmoxv1/</guid>
       <description>Project Idea: I would like to have a system for network virtualization service for my own personal projects and homelab.
 Investigation stage The initial idea for this project was inspired by my school&amp;rsquo;s Cyber Range (which is currently maintained by yours truly). I really like how in the Cyber Range students can get a virtual machine hosted over the network to allow for a sandboxed environment that is ofloaded to a separate machine.</description>
       <content>&lt;h2 id=&#34;project-idea&#34;&gt;Project Idea:&lt;/h2&gt;
@@ -53,8 +53,17 @@ For my specific setup, I needed the following settings in rufus to get it to wor
 &lt;li&gt;I had to flash it in DD mode when prompted because my laptop where I would be installing it did not like ISO mode.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation:&lt;/h2&gt;
-&lt;p&gt;Other than a few issues with the Dell bios, once I had booted into the Proxmox Installer, the installation was very straight forward.
-In the future, I will come back to this part of my site and add pictures I took of the installation process and annotate them. I just need to figure out how to accomplish that with this website builder first and I wanted to get a little bit of this project out before I got carried away with other things.&lt;/p&gt;
+&lt;p&gt;Other than a few issues with the Dell bios, once I had booted into the Proxmox Installer, the installation was very straight forward.&lt;/p&gt;
+&lt;p&gt;First, the installer took me to the license Agreement page:
+&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/eula.jpg&#34; alt=&#34;eula.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Then you had to select your disk where you wanted it installed:
+&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/driveSelect.jpg&#34; alt=&#34;disk_Select&#34;&gt;&lt;/p&gt;
+&lt;p&gt;From there it was simple setup stuff like setting time zone and email address for management:
+&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/timeZone.jpg&#34; alt=&#34;time_Zone&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/password.jpg&#34; alt=&#34;email/password&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It was here that I have hit my main issue with the project so far. You see, I am on a network at my college that I can not control and where I am discouraged from running such servers as this. For this reason, I am working on making a little (and quite slow) network using an esp32 module on a little arduino. I know this will not supply me with great speeds or even reliability, but given my current circumstance, I would say it is a win.&lt;/p&gt;
+&lt;p&gt;That part of the project is what I am currently working on, so stay tuned for me to finish this project if you want to see how I did it!&lt;/p&gt;
+&lt;p&gt;Thats all for now!&lt;/p&gt;
 </content>
     </item>
     
