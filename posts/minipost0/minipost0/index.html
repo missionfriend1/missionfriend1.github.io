@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Mini Project 0 :: Jett&#39;s Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Make a Minecraft Server with me! (and Learn some docker too!)" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://missionfriend1.github.io/posts/minipost0/minipost0/" />
+
+
+
+
+<link rel="stylesheet" href="https://missionfriend1.github.io/assets/style.css">
+
+  <link rel="stylesheet" href="https://missionfriend1.github.io/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://missionfriend1.github.io/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://missionfriend1.github.io/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Mini Project 0">
+<meta property="og:description" content="Make a Minecraft Server with me! (and Learn some docker too!)" />
+<meta property="og:url" content="https://missionfriend1.github.io/posts/minipost0/minipost0/" />
+<meta property="og:site_name" content="Jett&#39;s Blog" />
+
+  
+    <meta property="og:image" content="https://missionfriend1.github.io/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2022-05-29 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Jett&#39;s Blog
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://missionfriend1.github.io/posts/minipost0/minipost0/">Mini Project 0</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2022-05-29
+        
+      </span>
+    
+    
+      <span class="post-author">:: Ethan Jett</span>
+    
+    
+  </div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="mini-project-0-minecraft-server-docker--docker-compose">Mini Project 0: Minecraft Server Docker + Docker-Compose<a href="#mini-project-0-minecraft-server-docker--docker-compose" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Hello again! This project is one that I have been wanting to work on for a good while now, but due to time limitations, I have not been able to do so.</p>
+<h2 id="project-idea">Project Idea:<a href="#project-idea" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>I want to eventually get a Minecraft server on AWS, but to do so in the best way I can think of, I would like to have Docker and docker-compose set up to handle this so that I can quickly deploy my plan.</p>
+<h2 id="investigation-stage">Investigation stage:<a href="#investigation-stage" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>I knew that I wanted a Minecraft server that supported the aarch64 architecture as I was reasonably confident that I was going to be eventually hosting this on an A1 server at AWS and my test setup for this is a Raspberry Pi 4, 4GB model that I use for most of my home lab type stuff right now.</p>
+<p>As I see it, there are two main options here:</p>
+<ul>
+<li>Option one: Build the docker container myself and run from there.</li>
+</ul>
+<p>    - While this would in theory, be one of the best options as it allows for the highest level of control, it would also take the most time and effort.</p>
+<ul>
+<li>Option two: Use a preexisting Minecraft docker container.</li>
+</ul>
+<p>    - I investigated on <a href="https://hub.docker.com/">DockerHub</a> and found a wonderful container called itzg/minecraft-server. It supports not only the aarch64 architecture I was interested in, but also has some of the best documentation that I have seen in a while.</p>
+<h2 id="my-decision">My Decision:<a href="#my-decision" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>As was probably the smartest decision, I decided to go with the already created container from itzg. The main driving idea was that I didn&rsquo;t want to reinvent the wheel when someone had already made a better wheel than I could have.</p>
+<h2 id="step-0-preapre">Step 0: Preapre<a href="#step-0-preapre" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>I started by loading it into my already installed and configured Raspberry Pi 4. The O.S. I chose was aarch64 Ubuntu Server because I already had it installed and, since this project will be mostly run through Docker, the O.S. of choice made less of a difference than it could have.</p>
+<p>If you are trying to follow along with me on this project, I would recommend using this site here for how to get to where I am now. <a href="https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview">How to install Ubuntu server</a></p>
+<p>I skipped the part about installing a desktop environment as I wanted to save as much CPU power for the server as I could.</p>
+<h2 id="step-1-install-docker">Step 1: Install Docker<a href="#step-1-install-docker" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>To install Docker for Ubuntu on the Raspberry Pi, I used the following command:</p>
+<p><code>sudo apt install docker docker-compose</code></p>
+<p>And from there, we will need to pull the Docker image. The command to do that is:</p>
+<p><code>docker pull itzg/minecraft-server</code></p>
+<p>(Note that the above command may have to be run as root depending on how Docker is configured)</p>
+<h2 id="step-2-setup-my-docker-compose-yml-file">Step 2: Setup my docker compose yml file<a href="#step-2-setup-my-docker-compose-yml-file" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>In a new directory (mine was in ~/server22/) I made a file called docker-compose.yml which looked like the following:</p>
+<pre tabindex="0"><code>
+version: &#34;3.3&#34;
+
+services:
+
+  mc:
+
+    image: itzg/minecraft-server
+
+    container_name: minecraft
+
+    ports:
+
+      - 25565:25565/tcp
+
+    environment:
+
+      EULA: &#34;TRUE&#34;
+
+      MEMORY: 4G
+
+      MOTD: &#34;Jett Trial Server Summer 22 Pi edition&#34;
+
+      MAX_PLAYERS: 10
+
+      SPAWN_PROTECTION: 0
+
+      VIEW_DISTANCE: 8
+
+      VANILLATWEAKS_SHARECODE: hlidX4
+
+      ENABLE_RCON: false
+
+    tty: true
+
+    stdin_open: true
+
+    restart: unless-stopped
+
+    volumes:
+
+      - ./:/data
+</code></pre><p>The docker compose yml file above essentially starts the docker container with a specific set of settings enabled. Most of those settings will look similar to settings veteran minecraft server hosters would know about.</p>
+<p>There are some commands of note though:</p>
+<ul>
+<li>
+<p>image - This is what Docker image to use. You may recognize it from earlier.</p>
+</li>
+<li>
+<p>ports  - This allows Docker to use port 25565 from your host machine. This is important.</p>
+</li>
+<li>
+<p>VANILLATWEAKS_SHARECODE - This is a specific set of vanilla tweaks that I want to use in my server. If you do not want any tweaks, do not use this line. If you want to customize your tweaks, go to <a href="https://vanillatweaks.net/picker/datapacks/#">vanillatweaks</a> to generate your specific sharecode.</p>
+</li>
+<li>
+<p>ENABLE_RCON - This is a setting specific to the Docker container I am using. I did not want any RCON servers running in the background for security reasons because I am a bit paranoid. For that reason, I disabled it.</p>
+</li>
+<li>
+<p>restart: unless-stopped - This means that unless I stop the server manually, it will restart itself. If the power gets cut to my Raspberry Pi, it should be able to restart itself on reboot.</p>
+</li>
+<li>
+<p>volumes - I set the current working directory (in my example ~/server22) as the data folder for the minecraft server. This is really just an ease of use thing for me personally. Feel free to change this to whatever you want.</p>
+</li>
+</ul>
+<h2 id="step-3-profit">Step 3: Profit<a href="#step-3-profit" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>At this point, it should be as simple as running:</p>
+<p><code>docker-compose up -d</code></p>
+<p>In the directory you made your docker-compose.yml and then your server should be up.</p>
+<p>Now there are some issues to resolve that are completely up to you. Those things are:</p>
+<ul>
+<li>
+<p>Port forwarding so that you can access your server from outside your network</p>
+</li>
+<li>
+<p>If you want a domain name so that you don&rsquo;t have to give your friends your IP.</p>
+</li>
+</ul>
+<p>Both of those two things can easily be found how to do online but are often specific to your own situation, so I will not be describing that process here. </p>
+<p>That is all for now!</p>
+<p>Jett</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="https://missionfriend1.github.io/posts/proxmoxv1/proxmoxv1/">
+                <span class="button__text">Virtualization_project_01</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+  
+
+  
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2022 Made using <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://missionfriend1.github.io/assets/main.js"></script>
+<script src="https://missionfriend1.github.io/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
