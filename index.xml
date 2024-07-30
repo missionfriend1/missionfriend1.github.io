@@ -5,125 +5,71 @@
     <link>https://missionfriend1.github.io/</link>
     <description>Recent content on Jett&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://missionfriend1.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 29 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://missionfriend1.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mini Project 0</title>
-      <link>https://missionfriend1.github.io/posts/minipost0/minipost0/</link>
-      <pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate>
+      <title>Virtualization_project_02</title>
+      <link>https://missionfriend1.github.io/posts/proxmoxv2/proxmoxv2/</link>
+      <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://missionfriend1.github.io/posts/minipost0/minipost0/</guid>
-      <description>Mini Project 0: Minecraft Server Docker + Docker-Compose Hello again! This project is one that I have been wanting to work on for a good while now, but due to time limitations, I have not been able to do so.
-Project Idea: I want to eventually get a Minecraft server on AWS, but to do so in the best way I can think of, I would like to have Docker and docker-compose set up to handle this so that I can quickly deploy my plan.</description>
-      <content>&lt;h1 id=&#34;mini-project-0-minecraft-server-docker--docker-compose&#34;&gt;Mini Project 0: Minecraft Server Docker + Docker-Compose&lt;/h1&gt;
-&lt;p&gt;Hello again! This project is one that I have been wanting to work on for a good while now, but due to time limitations, I have not been able to do so.&lt;/p&gt;
-&lt;h2 id=&#34;project-idea&#34;&gt;Project Idea:&lt;/h2&gt;
-&lt;p&gt;I want to eventually get a Minecraft server on AWS, but to do so in the best way I can think of, I would like to have Docker and docker-compose set up to handle this so that I can quickly deploy my plan.&lt;/p&gt;
-&lt;h2 id=&#34;investigation-stage&#34;&gt;Investigation stage:&lt;/h2&gt;
-&lt;p&gt;I knew that I wanted a Minecraft server that supported the aarch64 architecture as I was reasonably confident that I was going to be eventually hosting this on an A1 server at AWS and my test setup for this is a Raspberry Pi 4, 4GB model that I use for most of my home lab type stuff right now.&lt;/p&gt;
-&lt;p&gt;As I see it, there are two main options here:&lt;/p&gt;
+      <guid>https://missionfriend1.github.io/posts/proxmoxv2/proxmoxv2/</guid>
+      <description>The elephant in the room: I feel it is important to say that this post has been a LONG time coming. I have not properly updated anything on this site in over 2 years! School took up too much of my time to document the projects that I did along the way, but rest assured things still happened!
+Proxmox post again? Yes, I finally succeeded in seting up Proxmox for my homelab.</description>
+      <content>&lt;h2 id=&#34;the-elephant-in-the-room&#34;&gt;The elephant in the room:&lt;/h2&gt;
+&lt;p&gt;I feel it is important to say that this post has been a LONG time coming. I have not properly updated anything on this site in over 2 years!
+School took up too much of my time to document the projects that I did along the way, but rest assured things still happened!&lt;/p&gt;
+&lt;h2 id=&#34;proxmox-post-again&#34;&gt;Proxmox post again?&lt;/h2&gt;
+&lt;p&gt;Yes, I finally succeeded in seting up Proxmox for my homelab. Here is a list of things that have contributed to this success:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Option one: Build the docker container myself and run from there.&lt;/li&gt;
+&lt;li&gt;My College&amp;rsquo;s Cyber Range switched from OpenStack to a more manageable Proxmox thanks to the work of Karl Trowbridge and myself.&lt;/li&gt;
+&lt;li&gt;I learned that you can do a custom installation of proxmox over Debian 12.&lt;/li&gt;
+&lt;li&gt;My understanding of virtualization as a whole increased substantially.&lt;/li&gt;
+&lt;li&gt;Proxmox updates have improved functionality.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;    - While this would in theory, be one of the best options as it allows for the highest level of control, it would also take the most time and effort.&lt;/p&gt;
+&lt;h2 id=&#34;updated-project-idea&#34;&gt;Updated Project Idea:&lt;/h2&gt;
+&lt;p&gt;Improve homelab with a virtualization server to isolate and control all the services I run.&lt;/p&gt;
+&lt;h2 id=&#34;constraints&#34;&gt;Constraints:&lt;/h2&gt;
+&lt;p&gt;There are many different issues that make my needs very different than a standard Proxmox installation.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Option two: Use a preexisting Minecraft docker container.&lt;/li&gt;
+&lt;li&gt;I needed it to be networked over WiFi.&lt;/li&gt;
+&lt;li&gt;I need to be able to handle the networking through Software Defined Networking only.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;    - I investigated on &lt;a href=&#34;https://hub.docker.com/&#34;&gt;DockerHub&lt;/a&gt; and found a wonderful container called itzg/minecraft-server. It supports not only the aarch64 architecture I was interested in, but also has some of the best documentation that I have seen in a while.&lt;/p&gt;
-&lt;h2 id=&#34;my-decision&#34;&gt;My Decision:&lt;/h2&gt;
-&lt;p&gt;As was probably the smartest decision, I decided to go with the already created container from itzg. The main driving idea was that I didn&amp;rsquo;t want to reinvent the wheel when someone had already made a better wheel than I could have.&lt;/p&gt;
-&lt;h2 id=&#34;step-0-preapre&#34;&gt;Step 0: Preapre&lt;/h2&gt;
-&lt;p&gt;I started by loading it into my already installed and configured Raspberry Pi 4. The O.S. I chose was aarch64 Ubuntu Server because I already had it installed and, since this project will be mostly run through Docker, the O.S. of choice made less of a difference than it could have.&lt;/p&gt;
-&lt;p&gt;If you are trying to follow along with me on this project, I would recommend using this site here for how to get to where I am now. &lt;a href=&#34;https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview&#34;&gt;How to install Ubuntu server&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;I skipped the part about installing a desktop environment as I wanted to save as much CPU power for the server as I could.&lt;/p&gt;
-&lt;h2 id=&#34;step-1-install-docker&#34;&gt;Step 1: Install Docker&lt;/h2&gt;
-&lt;p&gt;To install Docker for Ubuntu on the Raspberry Pi, I used the following command:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo apt install docker docker-compose&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;And from there, we will need to pull the Docker image. The command to do that is:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;docker pull itzg/minecraft-server&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;(Note that the above command may have to be run as root depending on how Docker is configured)&lt;/p&gt;
-&lt;h2 id=&#34;step-2-setup-my-docker-compose-yml-file&#34;&gt;Step 2: Setup my docker compose yml file&lt;/h2&gt;
-&lt;p&gt;In a new directory (mine was in ~/server22/) I made a file called docker-compose.yml which looked like the following:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-version: &amp;#34;3.3&amp;#34;
-
-services:
-
-  mc:
-
-    image: itzg/minecraft-server
-
-    container_name: minecraft
-
-    ports:
-
-      - 25565:25565/tcp
-
-    environment:
-
-      EULA: &amp;#34;TRUE&amp;#34;
-
-      MEMORY: 4G
-
-      MOTD: &amp;#34;Jett Trial Server Summer 22 Pi edition&amp;#34;
-
-      MAX_PLAYERS: 10
-
-      SPAWN_PROTECTION: 0
-
-      VIEW_DISTANCE: 8
-
-      VANILLATWEAKS_SHARECODE: hlidX4
-
-      ENABLE_RCON: false
-
-    tty: true
-
-    stdin_open: true
-
-    restart: unless-stopped
-
-    volumes:
-
-      - ./:/data
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The docker compose yml file above essentially starts the docker container with a specific set of settings enabled. Most of those settings will look similar to settings veteran minecraft server hosters would know about.&lt;/p&gt;
-&lt;p&gt;There are some commands of note though:&lt;/p&gt;
+&lt;p&gt;While the second issue has been fixed in recent versions of Proxmox to be much easier to acomplish, the first is still a rather complicated issue to resolve.&lt;/p&gt;
+&lt;h2 id=&#34;steps-taken&#34;&gt;Steps taken:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;image - This is what Docker image to use. You may recognize it from earlier.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ports  - This allows Docker to use port 25565 from your host machine. This is important.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;VANILLATWEAKS_SHARECODE - This is a specific set of vanilla tweaks that I want to use in my server. If you do not want any tweaks, do not use this line. If you want to customize your tweaks, go to &lt;a href=&#34;https://vanillatweaks.net/picker/datapacks/#&#34;&gt;vanillatweaks&lt;/a&gt; to generate your specific sharecode.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ENABLE_RCON - This is a setting specific to the Docker container I am using. I did not want any RCON servers running in the background for security reasons because I am a bit paranoid. For that reason, I disabled it.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;restart: unless-stopped - This means that unless I stop the server manually, it will restart itself. If the power gets cut to my Raspberry Pi, it should be able to restart itself on reboot.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;volumes - I set the current working directory (in my example ~/server22) as the data folder for the minecraft server. This is really just an ease of use thing for me personally. Feel free to change this to whatever you want.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;step-3-profit&#34;&gt;Step 3: Profit&lt;/h2&gt;
-&lt;p&gt;At this point, it should be as simple as running:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;docker-compose up -d&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;In the directory you made your docker-compose.yml and then your server should be up.&lt;/p&gt;
-&lt;p&gt;Now there are some issues to resolve that are completely up to you. Those things are:&lt;/p&gt;
+&lt;p&gt;As crazy as it may sound, you need to install Proxmox from a Debian base&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Port forwarding so that you can access your server from outside your network&lt;/p&gt;
+&lt;li&gt;This is to ensure that you can install network manager to get wifi with nmtui.&lt;/li&gt;
+&lt;li&gt;Follow this guide: (&lt;a href=&#34;https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm&#34;&gt;https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;From there it is a fairly simple setup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Assuming you are running proxmox 8.1+ you can set up a virtual internal NAT based network through SDN settings.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;If you want a domain name so that you don&amp;rsquo;t have to give your friends your IP.&lt;/p&gt;
+&lt;p&gt;Set up an SDN with the type simple&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure it allows for SNAT when making it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In a purely simplistic sense that is all! wow! you now have SNAT networking in your Proxmox wifi version!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Unfortunately there are a few things that need to be run each startup for this to work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;allow ipv4 forwarding&lt;/li&gt;
+&lt;li&gt;Any port forwarding rules that you wish to run need to be set through IPTables rules.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To solve the problems in the networking requiring IPTables rules to be run at startup, I wrote a simple SystemD service to run these commands at boot.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For the record since it took me a long time to find the command for opening up a NAT&amp;rsquo;d service to the local network, here it is:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Both of those two things can easily be found how to do online but are often specific to your own situation, so I will not be describing that process here. &lt;/p&gt;
-&lt;p&gt;That is all for now!&lt;/p&gt;
-&lt;p&gt;Jett&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ iptables -t nat -I PREROUTING -p {tcp or udp} -d {your host IP on network} --dport {port for local network} -j DNAT --to-destination {VMIP:VMPort}&lt;/code&gt;&lt;/p&gt;
 </content>
     </item>
     
@@ -175,12 +121,12 @@ For my specific setup, I needed the following settings in rufus to get it to wor
 &lt;h2 id=&#34;installation&#34;&gt;Installation:&lt;/h2&gt;
 &lt;p&gt;Other than a few issues with the Dell bios, once I had booted into the Proxmox Installer, the installation was very straight forward.&lt;/p&gt;
 &lt;p&gt;First, the installer took me to the license Agreement page:
-&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/eula.jpg&#34; alt=&#34;eula.jpg&#34;&gt;&lt;/p&gt;
+&lt;img alt=&#34;eula.jpg&#34; src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/eula.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Then you had to select your disk where you wanted it installed:
-&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/driveSelect.jpg&#34; alt=&#34;disk_Select&#34;&gt;&lt;/p&gt;
+&lt;img alt=&#34;disk_Select&#34; src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/driveSelect.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;From there it was simple setup stuff like setting time zone and email address for management:
-&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/timeZone.jpg&#34; alt=&#34;time_Zone&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/password.jpg&#34; alt=&#34;email/password&#34;&gt;&lt;/p&gt;
+&lt;img alt=&#34;time_Zone&#34; src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/timeZone.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;email/password&#34; src=&#34;https://missionfriend1.github.io/posts/proxmoxv1/password.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;It was here that I have hit my main issue with the project so far. You see, I am on a network at my college that I can not control and where I am discouraged from running such servers as this. For this reason, I am working on making a little (and quite slow) network using an esp32 module on a little arduino. I know this will not supply me with great speeds or even reliability, but given my current circumstance, I would say it is a win.&lt;/p&gt;
 &lt;p&gt;That part of the project is what I am currently working on, so stay tuned for me to finish this project if you want to see how I did it!&lt;/p&gt;
 &lt;p&gt;Thats all for now!&lt;/p&gt;
@@ -196,7 +142,7 @@ For my specific setup, I needed the following settings in rufus to get it to wor
       <description>About Hello, I am Ethan Jett. This website is my first attempt at a blog and I hope to keep it up to date with my ongoing computer projects.
 I often like to do little projects with computers, raspberry pis, and other (often Linux) computer related projects.
 Some such projects I have done in the past are:
- Raspberry pi entertainment center. Raspberry pi pihole + vpn A multitude of Linux Distro hops Dorm room entertainment system Linux (on things where it probably shouldn&amp;rsquo;t go)  I hope that this blog beomes a learning opportunity not only for others, but also myself.</description>
+Raspberry pi entertainment center. Raspberry pi pihole + vpn A multitude of Linux Distro hops Dorm room entertainment system Linux (on things where it probably shouldn&amp;rsquo;t go) I hope that this blog beomes a learning opportunity not only for others, but also myself.</description>
       <content>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
 &lt;p&gt;Hello, I am Ethan Jett. This website is my first attempt at a blog and I hope to keep it up to date with my ongoing computer projects.&lt;/p&gt;
 &lt;p&gt;I often like to do little projects with computers, raspberry pis, and other (often Linux) computer related projects.&lt;/p&gt;
@@ -220,8 +166,8 @@ Some such projects I have done in the past are:
       
       <guid>https://missionfriend1.github.io/posts/test/</guid>
       <description>Hello readers! This is my first real post on this blog. I want to set up this blog to hopefully keep track of some of my projects that I work on for my journey learning computers Test of bold font.
- As you can see, I am using this post to check out a couple of the features that this particular website builder has.
- I have decided to go with the website builder called Hugo for my website building that is because it offered me a couple of things that most modern website builders dont.</description>
+As you can see, I am using this post to check out a couple of the features that this particular website builder has.
+I have decided to go with the website builder called Hugo for my website building that is because it offered me a couple of things that most modern website builders dont.</description>
       <content>&lt;p&gt;Hello readers! This is my first real post on this blog. I want to set up this blog to hopefully keep track of some of my projects that I work on for my journey learning computers &lt;strong&gt;Test of bold font&lt;/strong&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;As you can see, I am using this post to check out a couple of the features that this particular website builder has.&lt;/p&gt;

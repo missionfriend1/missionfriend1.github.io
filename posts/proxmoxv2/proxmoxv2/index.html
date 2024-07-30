@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Virtualization_project_02 :: Jett&#39;s Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Success with Proxmox!" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://missionfriend1.github.io/posts/proxmoxv2/proxmoxv2/" />
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://missionfriend1.github.io/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://missionfriend1.github.io/img/theme-colors/pink.png">
+  <link rel="apple-touch-icon" href="https://missionfriend1.github.io/img/theme-colors/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Virtualization_project_02">
+<meta property="og:description" content="Success with Proxmox!" />
+<meta property="og:url" content="https://missionfriend1.github.io/posts/proxmoxv2/proxmoxv2/" />
+<meta property="og:site_name" content="Jett&#39;s Blog" />
+
+  
+    <meta property="og:image" content="https://missionfriend1.github.io/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2024-07-29 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Jett&#39;s Blog
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://missionfriend1.github.io/posts/proxmoxv2/proxmoxv2/">Virtualization_project_02</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2024-07-29 ::
+        
+      </time>
+    
+    
+      <span class="post-author">Ethan Jett</span>
+    
+    
+  </div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h2 id="the-elephant-in-the-room">The elephant in the room:<a href="#the-elephant-in-the-room" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>I feel it is important to say that this post has been a LONG time coming. I have not properly updated anything on this site in over 2 years!
+School took up too much of my time to document the projects that I did along the way, but rest assured things still happened!</p>
+<h2 id="proxmox-post-again">Proxmox post again?<a href="#proxmox-post-again" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Yes, I finally succeeded in seting up Proxmox for my homelab. Here is a list of things that have contributed to this success:</p>
+<ul>
+<li>My College&rsquo;s Cyber Range switched from OpenStack to a more manageable Proxmox thanks to the work of Karl Trowbridge and myself.</li>
+<li>I learned that you can do a custom installation of proxmox over Debian 12.</li>
+<li>My understanding of virtualization as a whole increased substantially.</li>
+<li>Proxmox updates have improved functionality.</li>
+</ul>
+<h2 id="updated-project-idea">Updated Project Idea:<a href="#updated-project-idea" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Improve homelab with a virtualization server to isolate and control all the services I run.</p>
+<h2 id="constraints">Constraints:<a href="#constraints" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>There are many different issues that make my needs very different than a standard Proxmox installation.</p>
+<ul>
+<li>I needed it to be networked over WiFi.</li>
+<li>I need to be able to handle the networking through Software Defined Networking only.</li>
+</ul>
+<p>While the second issue has been fixed in recent versions of Proxmox to be much easier to acomplish, the first is still a rather complicated issue to resolve.</p>
+<h2 id="steps-taken">Steps taken:<a href="#steps-taken" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ul>
+<li>
+<p>As crazy as it may sound, you need to install Proxmox from a Debian base</p>
+<ul>
+<li>This is to ensure that you can install network manager to get wifi with nmtui.</li>
+<li>Follow this guide: (<a href="https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm">https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm</a>)</li>
+<li>From there it is a fairly simple setup</li>
+</ul>
+<p>Assuming you are running proxmox 8.1+ you can set up a virtual internal NAT based network through SDN settings.</p>
+</li>
+<li>
+<p>Set up an SDN with the type simple</p>
+<ul>
+<li>Ensure it allows for SNAT when making it</li>
+</ul>
+</li>
+<li>
+<p>In a purely simplistic sense that is all! wow! you now have SNAT networking in your Proxmox wifi version!</p>
+</li>
+<li>
+<p>Unfortunately there are a few things that need to be run each startup for this to work:</p>
+<ul>
+<li>allow ipv4 forwarding</li>
+<li>Any port forwarding rules that you wish to run need to be set through IPTables rules.</li>
+</ul>
+</li>
+<li>
+<p>To solve the problems in the networking requiring IPTables rules to be run at startup, I wrote a simple SystemD service to run these commands at boot.</p>
+</li>
+<li>
+<p>For the record since it took me a long time to find the command for opening up a NAT&rsquo;d service to the local network, here it is:</p>
+</li>
+</ul>
+<p><code>$ iptables -t nat -I PREROUTING -p {tcp or udp} -d {your host IP on network} --dport {port for local network} -j DNAT --to-destination {VMIP:VMPort}</code></p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="https://missionfriend1.github.io/posts/proxmoxv1/proxmoxv1/">
+                <span class="button__text">Virtualization_project_01</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2024 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
